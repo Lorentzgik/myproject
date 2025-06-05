@@ -1,5 +1,6 @@
 <!-- index.php -->
 <?php
+session_start();
 $current_page = 'index';
 $page_title = 'TravelDream - Путешествия вашей мечты';
 $page_css = 'index';

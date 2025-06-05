@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/personal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>
     <?php if(isset($page_css)): ?>
         <link rel="stylesheet" href="css/<?= $page_css ?>.css">
     <?php endif; ?>
@@ -47,20 +50,17 @@
                             echo "<li><a href=\"{$key}.php\" $active><i class=\"{$value[1]}\"></i> {$value[0]}</a></li>";
                         }
                         
-                        // Блок авторизации (единственное изменяемое место)
+                        // Измененные элементы авторизации
                         if(isset($_SESSION['user'])): ?>
-                            <!-- Версия для авторизованных -->
                             <li>
                                 <a href="profile.php" class="nav-user">
                                     <i class="fas fa-user-circle"></i>
                                     <?= htmlspecialchars($_SESSION['user']['name']) ?>
                                 </a>
                             </li>
-                            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+                            <li><a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
                         <?php else: ?>
-                            <!-- Версия для гостей -->
-                            <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Войти</a></li>
-                            <li><a href="registration.php" class="register-btn">Регистрация</a></li>
+                            <li><a href="login.php" class="auth-btn <?= ($current_page == 'login' || $current_page == 'registration') ? 'active' : '' ?>"><i class="fas fa-user"></i> Выйти</a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>

@@ -61,10 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $phone_clean = preg_replace('/[^0-9]/', '', $phone);
 
-    // Проверяем, что номер:
-    // - Не пустой (если поле обязательно)
-    // - Содержит 11 цифр
-    // - Начинается на 7 или 8 (для российских номеров)
     if (!empty($phone)) {
         if (strlen($phone_clean) !== 11) {
             $errors['phone'] = 'Номер должен содержать 11 цифр';
@@ -89,10 +85,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $db->prepare("INSERT INTO client (name, surname, email, password, number) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$firstname, $lastname, $email, $hashed_password, $phone_clean]);
             
-            // Регистрация прошла успешно
-            echo '<div class="alert alert-success">Регистрация прошла успешно! Теперь вы можете <a href="login.php">войти</a>.</div>';
-            // Сброс полей формы
-            $firstname = $lastname = $email = $phone = '';
+            // Получаем ID нового пользователя
+            $user_id = $db->lastInsertId();
+            
+            // Создаем сессию для нового пользователя
+            session_start();
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_name'] = $firstname;
+            $_SESSION['user_email'] = $email;
+            
+            // Перенаправляем в личный кабинет
+            header('Location: personal.php');
+            exit();
+            
         } catch (PDOException $e) {
             $errors[] = 'Ошибка при регистрации: ' . $e->getMessage();
         }
@@ -203,14 +208,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 </main>
-
-<script>
-    $(document).ready(function() {
-        $('#phone').inputmask('99999999999', {
-            placeholder: '',  
-            showMaskOnHover: false
-        });
-    });
-</script>
 
 <?php require_once 'parts/footer.php'; ?>

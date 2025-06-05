@@ -4,6 +4,55 @@ $current_page = 'login';
 $page_title = 'TravelDream - Вход в аккаунт';
 $page_css = 'auth';
 require_once 'parts/header.php';
+require_once 'db.php';
+
+// Инициализация переменных
+$errors = [];
+$email = '';
+
+// Обработка отправки формы
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Получение и очистка данных
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    // Валидация данных
+    if (empty($email)) {
+        $errors['email'] = 'Пожалуйста, введите email';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = 'Некорректный формат email';
+    }
+
+    if (empty($password)) {
+        $errors['password'] = 'Пожалуйста, введите пароль';
+    }
+
+    // Если ошибок нет - проверяем учетные данные
+    if (empty($errors)) {
+        try {
+            // Ищем пользователя по email
+            $stmt = $db->prepare("SELECT id, name, surname, email, password FROM client WHERE email = ?");
+            $stmt->execute([$email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($password, $user['password'])) {
+                // Успешная авторизация
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_email'] = $user['email'];
+
+                // Перенаправляем в личный кабинет
+                header('Location: personal.php');
+                exit();
+            } else {
+                $errors['auth'] = 'Неверный email или пароль';
+            }
+        } catch (PDOException $e) {
+            $errors[] = 'Ошибка при авторизации: ' . $e->getMessage();
+        }
+    }
+}
 ?>
 
 <main class="container auth-container">
@@ -13,13 +62,24 @@ require_once 'parts/header.php';
             <p class="subtitle">Продолжайте планировать своё идеальное путешествие</p>
         </div>
         
-        <form class="auth-form">
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+                <?php foreach ($errors as $error): ?>
+                    <p><?= htmlspecialchars($error) ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        
+        <form class="auth-form" method="POST" novalidate>
             <div class="form-group">
                 <label for="email">Электронная почта</label>
                 <div class="input-wrapper">
                     <span class="input-icon"><i class="fas fa-envelope"></i></span>
-                    <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                    <input type="email" id="email" name="email" required placeholder="example@mail.ru" value="<?= htmlspecialchars($email) ?>">
                 </div>
+                <?php if (isset($errors['email'])): ?>
+                    <span class="error-message"><?= htmlspecialchars($errors['email']) ?></span>
+                <?php endif; ?>
             </div>
             
             <div class="form-group">
@@ -28,6 +88,9 @@ require_once 'parts/header.php';
                     <span class="input-icon"><i class="fas fa-lock"></i></span>
                     <input type="password" id="password" name="password" required placeholder="Введите ваш пароль">
                 </div>
+                <?php if (isset($errors['password'])): ?>
+                    <span class="error-message"><?= htmlspecialchars($errors['password']) ?></span>
+                <?php endif; ?>
                 <a href="#" class="forgot-password">Забыли пароль?</a>
             </div>
             
