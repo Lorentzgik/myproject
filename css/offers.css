@@ -1,0 +1,186 @@
+.offers-container {
+    padding: 40px 0;
+}
+
+.subtitle {
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Главная акция */
+.main-offer {
+    display: flex;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+}
+
+.offer-content {
+    padding: 40px;
+    flex: 1;
+}
+
+.offer-image {
+    flex: 1;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.offer-badge {
+    background: var(--accent);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.offer-timer {
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+/* Сетка акций */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.offer-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+}
+
+.offer-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.offer-card-header {
+    position: relative;
+    padding: 15px;
+}
+
+.discount {
+    background: var(--accent);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.offer-label {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.offer-card-body {
+    padding: 20px;
+}
+
+.price {
+    margin-top: 15px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #94a3b8;
+    margin-right: 10px;
+}
+
+.new-price {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.child-price {
+    display: block;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Специальные стили для типов акций */
+.hot-offer .offer-card-header {
+    background: #fee2e2;
+}
+
+.family-offer .offer-card-header {
+    background: #dcfce7;
+}
+
+/* Условия */
+.offer-conditions {
+    margin-top: 60px;
+}
+
+.offer-conditions h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.condition-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.condition-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .main-offer {
+        flex-direction: column;
+    }
+    
+    .offer-content {
+        order: 2;
+    }
+    
+    .offer-image {
+        order: 1;
+        height: 250px;
+    }
+}

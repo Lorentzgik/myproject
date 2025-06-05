@@ -1,0 +1,103 @@
+/* Уникальные стили для страницы каталога туров */
+.catalog-container {
+    display: flex;
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.filters {
+    width: 300px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.filter-options label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.filter-options input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.price-range {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.price-range input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+}
+
+.catalog-content {
+    flex: 1;
+}
+
+.sorting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.sorting select {
+    padding: 8px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.pagination button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+    background: #1d4ed8;
+}
+
+.pagination button.active {
+    background: var(--dark);
+}

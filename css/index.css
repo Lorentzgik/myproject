@@ -1,0 +1,321 @@
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-box {
+    background: white;
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-box button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-box button:hover {
+    background: #ea580c;
+}
+
+/* Popular Tours */
+.section-title {
+    text-align: center;
+    margin: 60px 0 40px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    display: inline-block;
+    background: white;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--secondary);
+    z-index: 0;
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.tour-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tour-card:hover {
+    transform: translateY(-10px);
+}
+
+.tour-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.tour-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tour-card:hover .tour-image img {
+    transform: scale(1.1);
+}
+
+.tour-content {
+    padding: 20px;
+}
+
+.tour-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.tour-location {
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+
+.tour-location i {
+    margin-right: 5px;
+}
+
+.tour-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+.tour-meta div {
+    display: flex;
+    align-items: center;
+}
+
+.tour-meta i {
+    color: var(--accent);
+    margin-right: 5px;
+}
+
+.tour-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.price span {
+    font-size: 1rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.book-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Benefits Section */
+.benefits {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 80px 0;
+    margin: 60px 0;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+.benefit-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Testimonials */
+.testimonials {
+    margin-bottom: 80px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 5rem;
+    color: rgba(37, 99, 235, 0.1);
+    font-family: serif;
+    line-height: 1;
+}
+
+.testimonial-text {
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.author-info p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Responsive для главной страницы */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .search-box {
+        flex-direction: column;
+        background: transparent;
+        gap: 10px;
+    }
+    
+    .search-box input {
+        border-radius: 5px;
+    }
+    
+    .search-box button {
+        border-radius: 5px;
+    }
+}
