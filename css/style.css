@@ -175,11 +175,6 @@ nav ul li a.active {
     margin-left: 10px;
 }
 
-.auth-buttons button:hover {
-    background: #ea580c;
-    transform: translateY(-2px);
-}
-
 /* Footer */
 footer {
     background: var(--dark);

@@ -319,3 +319,39 @@
         border-radius: 5px;
     }
 }
+
+.view-all-btn {
+    background: #3498db;
+    color: white;
+    padding: 12px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    box-shadow: none;
+}
+
+.view-all-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.view-all-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.view-all-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.view-all-btn:hover i {
+    transform: translateX(4px);
+}

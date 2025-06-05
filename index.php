@@ -93,7 +93,7 @@ require_once 'parts/header.php';
         </div>
         
         <div style="text-align: center; margin: 30px 0;">
-            <a href="tours.html" class="book-btn" style="padding: 12px 40px; display: inline-block;">
+            <a href="tours.php" class="view-all-btn" style="padding: 12px 40px; display: inline-block; background: #3498db; color: white; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; border: none; outline: none;">
                 <i class="fas fa-arrow-right"></i> Смотреть все туры
             </a>
         </div>
@@ -200,9 +200,9 @@ require_once 'parts/header.php';
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Получите скидку 15% на первый тур!</h3>
                 <p style="font-size: 1.2rem; margin-bottom: 30px;">Зарегистрируйтесь на нашем сайте и получите персональную скидку на первый заказ.</p>
-                <a href="registration.html" class="book-btn" style="background: white; color: #f97316; padding: 15px 40px;">
+                <button id="discountBtn" class="book-btn" style="background: white; color: #f97316; padding: 15px 40px;">
                     <i class="fas fa-gift"></i> Получить скидку
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -221,17 +221,31 @@ require_once 'parts/header.php';
             });
             
             // Анимация для кнопки "Забронировать"
-            const bookButtons = document.querySelectorAll('.book-btn');
+            const bookButtons = document.querySelectorAll('.tour-price .book-btn');
             bookButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Обработка...';
                     setTimeout(() => {
-                        window.location.href = 'booking.html';
+                        window.location.href = 'booking.php';
                     }, 1000);
                 });
             });
+
+            // Обработка кнопки "Получить скидку"
+            const discountBtn = document.getElementById('discountBtn');
+            if (discountBtn) {
+                discountBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Перенаправление...';
+                    setTimeout(() => {
+                        window.location.href = 'registration.php';
+                    }, 1000);
+                });
+            }
             
+
+
             // Обработка поиска
             const searchButton = document.querySelector('.search-box button');
             searchButton.addEventListener('click', function() {

@@ -7,6 +7,8 @@
     <link rel="icon" href="imgs/logo_main.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <?php if(isset($page_css)): ?>
         <link rel="stylesheet" href="css/<?= $page_css ?>.css">
     <?php endif; ?>
@@ -44,16 +46,22 @@
                             $active = ($current_page == $key) ? 'class="active"' : '';
                             echo "<li><a href=\"{$key}.php\" $active><i class=\"{$value[1]}\"></i> {$value[0]}</a></li>";
                         }
-                        ?>
+                        
+                        // Добавленные элементы авторизации
+                        if(isset($_SESSION['user'])): ?>
+                            <li>
+                                <a href="profile.php" class="nav-user">
+                                    <i class="fas fa-user-circle"></i>
+                                    <?= htmlspecialchars($_SESSION['user']['name']) ?>
+                                </a>
+                            </li>
+                            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+                        <?php else: ?>
+                            <li><a href="login.php" class="<?= ($current_page == 'login') ? 'active' : '' ?>"><i class="fas fa-sign-in-alt"></i> Войти</a></li>
+                            <li><a href="registration.php" class="register-btn <?= ($current_page == 'registration') ? 'active' : '' ?>">Регистрация</a></li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
-                
-                <div class="auth-buttons">
-                    <div class="auth-buttons-container">
-                        <button class="auth-btn login-btn"><i class="fas fa-user"></i> Войти</button>
-                        <button class="auth-btn register-btn"><i class="fas fa-user-plus"></i> Регистрация</button>
-                    </div>
-                </div>
             </div>
         </div>
     </header>

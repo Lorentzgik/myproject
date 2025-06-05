@@ -75,15 +75,21 @@ $type = $_GET['type'] ?? '';
                         <h3 class="tour-title">Райские Мальдивы</h3>
                         <div class="tour-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Мальдивы, Индийский океан
+                            <span>Мальдивы, Индийский океан</span>
                         </div>
                         <div class="tour-meta">
-                            <div><i class="fas fa-calendar"></i> 7 дней</div>
-                            <div><i class="fas fa-user-friends"></i> 2 чел.</div>
+                            <div class="meta-item"><i class="fas fa-calendar"></i><span>7 дней</span></div>
+                            <div class="meta-item"><i class="fas fa-user-friends"></i><span>2 чел.</span></div>
                         </div>
                         <div class="tour-price">
-                            <div class="price">120 000 ₽ <span>145 000 ₽</span></div>
-                            <button class="book-btn">Забронировать</button>
+                            <div class="price-container">
+                                <div class="price">120 000 ₽</div>
+                                <div class="old-price">145 000 ₽</div>
+                            </div>
+                            <button class="book-btn">
+                                <span class="btn-text">Забронировать</span>
+                                <i class="fas fa-arrow-right btn-icon"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -100,5 +106,31 @@ $type = $_GET['type'] ?? '';
             </div>
         </section>
     </main>
+
+    <script>
+        document.querySelectorAll('.book-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Анимация нажатия
+        this.classList.add('clicked');
+        setTimeout(() => {
+            this.classList.remove('clicked');
+        }, 300);
+        
+        // Изменение состояния кнопки
+        const btnText = this.querySelector('.btn-text');
+        const btnIcon = this.querySelector('.btn-icon');
+        
+        btnText.textContent = 'Обработка...';
+        btnIcon.className = 'fas fa-spinner fa-spin btn-icon';
+        
+        // Имитация загрузки и переход
+        setTimeout(() => {
+            window.location.href = 'booking.php';
+        }, 1000);
+    });
+});
+    </script>
 
 <?php require_once 'parts/footer.php'; ?>
