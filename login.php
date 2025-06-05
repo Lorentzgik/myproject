@@ -8,21 +8,33 @@ require_once 'parts/header.php';
 
 <main class="container auth-container">
     <div class="auth-card">
-        <h1>Вход в аккаунт</h1>
+        <div class="auth-header">
+            <h1>Вход в аккаунт</h1>
+            <p class="subtitle">Продолжайте планировать своё идеальное путешествие</p>
+        </div>
         
         <form class="auth-form">
             <div class="form-group">
-                <label>Электронная почта</label>
-                <input type="email" required placeholder="example@mail.ru">
+                <label for="email">Электронная почта</label>
+                <div class="input-wrapper">
+                    <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                    <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                </div>
             </div>
             
             <div class="form-group">
-                <label>Пароль</label>
-                <input type="password" required placeholder="••••••••">
+                <label for="password">Пароль</label>
+                <div class="input-wrapper">
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="password" name="password" required placeholder="Введите ваш пароль">
+                </div>
                 <a href="#" class="forgot-password">Забыли пароль?</a>
             </div>
             
-            <button type="submit" class="book-btn">Войти</button>
+            <button type="submit" class="book-btn auth-submit">
+                <span>Войти</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
             
             <div class="social-login">
                 <p>Или войдите с помощью:</p>
@@ -34,7 +46,7 @@ require_once 'parts/header.php';
             </div>
             
             <div class="auth-footer">
-                Ещё нет аккаунта? <a href="registration.php">Зарегистрироваться</a>
+                Ещё нет аккаунта? <a href="registration.php" class="auth-link">Зарегистрироваться</a>
             </div>
         </form>
     </div>
