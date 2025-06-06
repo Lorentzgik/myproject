@@ -1,5 +1,6 @@
 <!-- offers.php -->
 <?php
+session_start();
 $current_page = 'offers';
 $page_title = 'TravelDream - Акции и скидки';
 $page_css = 'offers';

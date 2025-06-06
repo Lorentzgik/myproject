@@ -1,5 +1,6 @@
 <!-- hotels.php -->
 <?php
+session_start();
 $current_page = 'hotels';
 $page_title = 'TravelDream - Отели';
 $page_css = 'hotels';

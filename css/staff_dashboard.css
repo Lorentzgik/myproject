@@ -1,0 +1,198 @@
+/* Staff Dashboard */
+.staff-dashboard {
+    background-color: #f1f5f9;
+    padding: 30px 0;
+    min-height: calc(100vh - 120px);
+}
+
+.dashboard-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.badge {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.btn-logout {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Quick Actions */
+.quick-actions-grid {
+    display: flex;          /* Включил flexbox */
+    flex-wrap: wrap;        /* Если не помещаются — переносим на новую строку */
+    justify-content: center; /* Центрируем карточки по горизонтали */
+    gap: 20px;             /* Отступ между карточками */
+    margin: 0 auto 30px;   /* Центрируем весь блок */
+    max-width: 100%;       /* Чтобы не выходило за границы экрана */
+    padding: 0 10px;       /* Отступы по бокам на мобильных */
+}
+.quick-action-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.quick-action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.quick-action-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.quick-action-card h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--dark);
+}
+
+.dashboard-content {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.dashboard-tabs .nav-tabs {
+    border-bottom: 2px solid #e2e8f0;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.dashboard-tabs .nav-link {
+    border: none;
+    color: #64748b;
+    font-weight: 500;
+    padding: 15px 20px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-tabs .nav-link.active {
+    color: var(--primary);
+    background: transparent;
+    border-bottom: 3px solid var(--primary);
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dashboard-tabs .nav-tabs {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .dashboard-tabs .nav-link {
+        border-radius: 0;
+        margin-right: 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .dashboard-tabs .nav-link.active {
+        border-bottom: 3px solid var(--primary);
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.quick-actions-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin: 0 auto;
+}
+
+.quick-actions-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}

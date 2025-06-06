@@ -1,5 +1,6 @@
 <!-- contacts.php -->
 <?php
+session_start();
 $current_page = 'contacts';
 $page_title = 'TravelDream - Контакты';
 $page_css = 'contacts';

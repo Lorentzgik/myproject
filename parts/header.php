@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/personal.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <?php if(isset($page_css)): ?>
         <link rel="stylesheet" href="css/<?= $page_css ?>.css">
     <?php endif; ?>
@@ -47,16 +49,35 @@
                             echo "<li><a href=\"{$key}.php\" $active><i class=\"{$value[1]}\"></i> {$value[0]}</a></li>";
                         }
                         
-                        // Блок авторизации (единственное изменяемое место)
-                        if(isset($_SESSION['user'])): ?>
-                            <!-- Версия для авторизованных -->
+                        // Блок авторизации
+                        if (isset($_SESSION['staff_logged_in'])): ?>
+                            <!-- Версия для сотрудника (админ/менеджер) -->
                             <li>
-                                <a href="profile.php" class="nav-user">
-                                    <i class="fas fa-user-circle"></i>
-                                    <?= htmlspecialchars($_SESSION['user']['name']) ?>
+                                <a href="staff_dashboard.php" class="nav-user">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span class="user-name">
+                                        <?= htmlspecialchars($_SESSION['staff_name'] ?? 'Панель') ?>
+                                    </span>
                                 </a>
                             </li>
-                            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+                            <li>
+                                <a style="margin-top:10%" href="staff_logout.php" class="logout-btn" title="Выйти">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </a>
+                            </li>
+                        <?php elseif (isset($_SESSION['user_id'])): ?>
+                            <!-- Версия для обычного пользователя -->
+                            <li>
+                                <a href="personal.php" class="nav-user">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span class="user-name"><?= htmlspecialchars($_SESSION['user_name'] ?? 'Профиль') ?></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a style="margin-top:10%" href="logout.php" class="logout-btn" title="Выйти">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </a>
+                            </li>
                         <?php else: ?>
                             <!-- Версия для гостей -->
                             <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Войти</a></li>

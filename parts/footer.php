@@ -1,4 +1,3 @@
-<!-- parts/footer.php -->
 <footer>
     <div class="container">
         <div class="footer-content">
@@ -42,6 +41,9 @@
                     <p><i class="fas fa-phone-alt"></i> +7 (495) 123-45-67</p>
                     <p><i class="fas fa-envelope"></i> info@traveldream.ru</p>
                     <p><i class="fas fa-clock"></i> Пн-Пт: 10:00 - 20:00, Сб-Вс: 11:00 - 18:00</p>
+                    <?php if (!isset($_SESSION['user_id']) && !isset($_SESSION['staff_logged_in'])): ?>
+                        <p><i class="fas fa-user-shield"></i> <a href="staff_login.php" style="color: #cbd5e1;">Вход для сотрудников</a></p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

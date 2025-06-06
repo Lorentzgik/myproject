@@ -6,6 +6,8 @@ $page_css = 'auth';
 require_once 'parts/header.php';
 require_once 'db.php';
 
+
+
 // Инициализация переменных
 $errors = [];
 $email = '';
